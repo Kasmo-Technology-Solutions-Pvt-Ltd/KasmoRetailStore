@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Message Channel to Pass Data</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>this feild pass category data to detail page component</description>
+        <fieldName>CategoryId</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>this feild pass input data from textbox  to detail page component</description>
+        <fieldName>searchKey</fieldName>
+    </lightningMessageFields>
+    <masterLabel>KasmoMessageChannel</masterLabel>
+</LightningMessageChannel>

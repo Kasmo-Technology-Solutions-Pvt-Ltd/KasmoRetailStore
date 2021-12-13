@@ -1,0 +1,48 @@
+<template>
+    <div class="layout1">
+        <lightning-layout>
+            <span class="slds-align_absolute-center slds-p-around_small allprod">
+                <h style="font-weight: bold;">ALL PRODUCTS</h>
+            </span>
+            <template if:true={isButtonDisabled}>
+            <span class="slds-align_absolute-right slds-p-around_small ">
+                <lightning-button class="slds-p-around_small" label="Create Product" variant="brand"
+                    onclick={oncreateproductclick}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_small" label="Refresh" variant="brand" onclick={onrefreshclick}>
+                </lightning-button>
+            </span>
+        </template>
+        </lightning-layout>
+    </div>
+    <div class="layout2">
+        <lightning-layout>
+            <lightning-card title="Products" style="font-weight: bold;">
+                <div
+                    class="slds-grid slds-gutters slds-wrap slds-grid_vertical-align-start slds-grid_vertical-align-end">
+                    <template if:true={getproducts.data}>
+                        <template for:each={getproducts.data.records} for:item="prod">
+                            <div class="slds-col  slds-medium-size_1-of-7 slds-p-around_medium" name={prod.Id} key={prod.Id}>
+                                <span key={prod.Id}>{prod.Name}</span>
+                                <span class="pro"  key={prod.Id}><img src={prod.kasmors__Image_URL__c} alt="NO_Image" name={prod.Id} onclick={onimgclk}> </span>
+                                <template if:true={displaybutton}>
+                                    <lightning-button label="Add variant" variant="brand"  onclick={onvariantclick}></lightning-button>
+                                </template>
+                            </div>
+                           
+                        </template>
+                        <c-paginator
+                        page-number={pageNumber}
+                        page-size={getproducts.data.pageSize}
+                        total-item-count={getproducts.data.totalItemCount}
+                        onprevious={handlePreviousPage}
+                        onnext={handleNextPage}>
+                    </c-paginator>
+                    </template>
+
+                </div>
+            </lightning-card>
+        </lightning-layout>
+    </div>
+
+</template>

@@ -1,0 +1,84 @@
+.wishListContainer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    bottom: 100px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    
+}
+.productImage{
+    cursor: pointer;
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+    opacity: 1;
+    width: 150px;
+    height: 200px;
+}
+.img {
+    border-style: none;
+}
+.removeButton{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #696b79;
+    padding: 0;
+    height: 20px;
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.productName{
+    font-size: 16px;
+    color: #282c3f;
+    text-align: left;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.productPrice{
+    font-weight: 500;
+    padding: 0 3px 0 0;
+    font-size: 16px;
+    color: #282c3f;
+}
+.productSize{
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    margin: 10px;
+}
+.moveToBag{
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0;
+    height: 20px;
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #ff3f6c!important;
+    margin: 10px;
+    padding-left: 36px;   
+}
+.continueShopping{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    background: #ff3f6c;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 350px;
+    margin-top: 10px;
+}

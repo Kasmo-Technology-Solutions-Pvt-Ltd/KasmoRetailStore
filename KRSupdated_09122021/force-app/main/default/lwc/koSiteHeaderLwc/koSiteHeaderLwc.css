@@ -1,0 +1,119 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 259px;
+    display: flow-root;
+    font-family: arial;
+  }
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  applyButton{
+    float: right;
+    padding: 4px 16px;
+    color: #ff3f6c;
+    border: 1px solid #ff3f6c;
+    border-radius: 3px;
+    text-transform: none;
+    cursor: pointer;
+    font-weight: 600;
+    right: 0;
+    background: #fff;
+    font-size: 12px;
+  }
+  .button {
+    font-size: 16px;
+    position: relative;
+    top: 20%;
+    color: #0a0204;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .button2 {
+    font-size: 14px;
+    color:tomato;
+    text-transform: uppercase;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;   
+    
+    cursor: pointer;
+  }
+  .button3 {
+    font-size: 12px;
+    color: midnightblue;
+    text-transform: uppercase;
+    text-align: left;
+    
+    cursor: pointer;
+  }
+  .btnLogin{
+    background-color: #ddd;
+    border: none;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    width: 115px;
+    font-size: 10px;
+  }
+  .profilelst{
+    color: #0a0204;
+    border: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 10px;
+  }
+  .crossMarkIcon{
+    float: right;
+    font: icon;
+    cursor: pointer;
+}
+.iconImage{
+  margin: 10px 0 0;
+    position: absolute;
+    bottom: 13px;
+    left: 5px;
+    display: block;
+}
+.bagCount{
+  white-space: nowrap;
+    text-align: center;
+    line-height: 18px;
+    padding: 0 6px;
+    height: 18px;
+    background:green;
+    position: relative;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 11px;
+    right: 140px;
+    top:-10px;
+    left:-15px;
+    
+}
+.slds-modal {
+  position: absolute;
+  height:50%;
+  width:75%;
+  top:10%;
+  left:10%;
+}
+.slds-m-horizontal_medium{
+  columns:auto;
+}

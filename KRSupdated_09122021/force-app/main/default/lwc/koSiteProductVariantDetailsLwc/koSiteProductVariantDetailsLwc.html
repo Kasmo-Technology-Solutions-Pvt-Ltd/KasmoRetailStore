@@ -1,0 +1,23 @@
+<template>
+    <template if:true={productsWithVarients}>
+        <lightning-card title='Product Details'>
+            <lightning-layout>
+                <div class='slds-grid slds-wrap'>
+                <template for:each={productsWithVarients.data} for:item='productVarient'>
+                <lightning-layout-item key={productVarient.Id} class='slds-size_1-of-2'>
+                        <lightning-card>
+                        <img src={productVarient.kasmors__Image_URL__c} alt={productVarient.Name} name={productVarient.Id}> 
+                        </lightning-card>
+                    </lightning-layout-item>
+                    <lightning-layout-item key={productVarient.Id} class='slds-size_1-of-2'>
+                        <h1>{productVarient.Name}</h1>
+                        <p>{productVarient.kasmors__Option_1_Label__c}-{productVarient.kasmors__Option_1_Value__c}</p>
+                        <p>{productVarient.kasmors__Option_2_Label__c}-{productVarient.kasmors__Option_2_Value__c}</p>
+                        <p class="price">RS.{productVarient.kasmors__Price__c}</p>
+                    </lightning-layout-item>
+                </template>
+                </div>
+            </lightning-layout>
+        </lightning-card>
+    </template>
+</template>

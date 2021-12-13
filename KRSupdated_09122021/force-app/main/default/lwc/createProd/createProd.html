@@ -1,0 +1,49 @@
+<template>
+ 
+    <lightning-layout class="layout slds-align_absolute-center slds-m-around_large">
+        <template if:true={displaylayout}>
+            <lightning-card class="slds-align_absolute-center slds-size_1-of-1 slds-modal slds-fade-in-open slds-backdrop">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={onreset}> 
+                <lightning-icon icon-name="utility:close"
+                   alternative-text="close"
+                   variant="inverse"
+                   size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+             </button>
+                <lightning-input class="slds-p-around_small name" style="font-weight: bold;" type="text"
+                    label="Product Name" placeholder="Enter Product Name" onchange={onproductChange} data-name="prod" required>
+                </lightning-input>
+                <lightning-input class="slds-p-around_small" style="font-weight: bold;" type="checkbox" label="Active"
+                    onchange={onactivechange} >
+                </lightning-input>
+                <lightning-input class="slds-p-around_small" style="font-weight: bold;" type="text"
+                    label="Product Description" placeholder="Enter Description" onchange={ondeschange} data-name="des" required>
+                </lightning-input >
+                <lightning-record-edit-form object-api-name="Product2">                    
+                  <lightning-input-field field-name="kasmors__ChildCategory__c" label="Child Category"  onchange={myLookupHandle3} required> </lightning-input-field >
+                </lightning-record-edit-form>
+
+                <lightning-button class="slds-p-around_small slds-align_absolute-center" variant="brand" label="submit"
+                    onclick={onsubmit}></lightning-button>
+                <lightning-file-upload style="font-weight: bold;" class="slds-p-around_small" label="Upload Files"
+                    name="fileUploader" record-id={recordId} accept={acceptedFormats} onuploadfinished={onupload}
+                    multiple>
+                </lightning-file-upload>
+                <div class="slds-p-around_small">
+                    <span>
+                        <lightning-button class="slds-p-around_small slds-align_absolute-center" variant="brand" label="reset" onclick={onreset}>
+                        </lightning-button>
+                    </span>
+                    
+                </div>
+            </lightning-card>
+        </template>
+    </lightning-layout>
+ 
+    
+
+</template>
+
+ <!--   <lightning-input-field  field-name="Category__c" label="Parent Category"  onchange={myLookupHandle1} > </lightning-input-field >
+                    <lightning-input-field field-name="Sub_Category__c" label="Sub Category"  onchange={myLookupHandle2} > </lightning-input-field >                
+                  -->

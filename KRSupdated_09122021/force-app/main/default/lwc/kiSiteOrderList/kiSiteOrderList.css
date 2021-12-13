@@ -1,0 +1,26 @@
+.imgData{
+    background-color: rgb(234, 220, 50);
+    border-radius: 2px;
+    width: 80px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+}
+.detail{
+    padding: 16px 18px 12px; 
+    position: relative;
+
+}
+.imgsize{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+
+}
+.head{
+    /* position: absolute; */
+    padding: 30px 30px 30px;
+
+    
+
+}

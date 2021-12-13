@@ -1,0 +1,146 @@
+.accountContainer{
+    border-bottom: 1px solid #d4d5d9;
+    padding: 15px 0px;
+    font-size: 12px;
+}
+.accountLabel{
+    font-size: 18px;
+    font-weight: 800;
+}
+.profileEditCard{
+    padding-top: 55px;
+    padding-bottom: 40px;
+    border: 1px solid #d4d4d9;
+    margin: 10px;
+}
+.profileEditLabel{
+    color: #282C3F;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 1px solid #eaeaec;
+    margin: 0;
+    font-family: Whitney-SemiBold, Whitney;
+    padding: 0 24px 24px 24px;
+}
+.inputMobile{
+    padding: 12px;
+    background-color: #FFFFFF;
+    border: solid 1px #d4d5d9;
+    margin: 20px 24px 30px 24px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    display: flex;
+}
+.textInput{
+    border: solid 1px #d4d5d9;
+    font-size: 16px;
+    padding: 12px;
+    height: auto;
+    color: #282c3f;
+    width: 90%;
+    margin: 10px 42px;
+}
+.saveDetailsButton{
+    padding: 11px 0;
+    border: 1px solid #ff3f6c;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #ff3f6c;
+    color:white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    width: 90%;
+    outline: 0;
+    cursor: pointer;
+    margin: 10px 42px;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.verticalSideContainer{
+    vertical-align: top;
+    border-right: 1px solid #d4d5d9;
+    text-align: left;
+    padding: 0px 25px 0px 0px;
+    font-size: 15px;
+}
+.verticalSideItem{
+    border-top: 1px solid #d4d5d9;
+    padding: 20px 0px;
+    width: 100%;
+}
+.ordersLabel{
+    color: #7e818c;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px 0px;
+}
+.accountName{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.genderButtonMale{
+    background-color: #FFFFFF;
+    padding: 7px 0;
+    border: 1px solid rgba(40, 44, 63, 0.2);
+    width: 45%;
+    outline: 0;
+    cursor: pointer;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.genderButtonFemale{
+    background-color: #FFFFFF;
+    padding: 7px 0;
+    border: 1px solid rgba(40, 44, 63, 0.2);
+    width: 45%;
+    outline: 0;
+    cursor: pointer;
+    min-height: 40px;
+    vertical-align: middle;
+}
+.selectedGenderButton{
+    background-color: #ff3f6c;
+    padding: 7px 0;
+    border: 1px solid rgba(40, 44, 63, 0.2);
+    width: 45%;
+    outline: 0;
+    cursor: pointer;
+    min-height: 40px;
+    vertical-align: middle;  
+}
+.alternateMobileDetails{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(62, 65, 82);
+    margin-left: 40px;
+}
+.changePasswordButton{
+    border: 1px solid #d4d5d9;
+    padding: 12px 32px;
+    color: #282C3F;
+    font-weight: 600;
+    font-family: Whitney-SemiBold, Whitney;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 14px;
+    width: 90%;
+    outline: 0;
+    cursor: pointer;
+    margin: 10px 42px;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

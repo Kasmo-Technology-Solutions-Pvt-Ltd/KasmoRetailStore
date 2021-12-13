@@ -1,0 +1,434 @@
+<template>
+  <!-- POPUP FOR CHANGE ADDRESS -->
+  <div>
+    <template if:true={openChangeAddressModal}>
+      <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true"
+        aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <div class='addNewAddressLabelInModal'>
+            Change Address
+            <span class='crossMarkIcon' onclick={changeAddressModelCloseHandler}>&#10060;</span>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+            <span class='selectDeliveryAddress'>Select Delivery Address</span><span><button class='addNewAddress'
+                onclick={createAddressHandler}>Add New Address</button></span>
+            <p class='defaultAddress'>Default Address</p>
+            <div class="userAddressBlock">
+              <template if:true={getUserAddress.data}>
+                <template for:each={getUserAddress.data} for:item='userAddress'>
+                  <div class='bottomBorder' key={userAddress.id}>
+                    &nbsp;&nbsp;Deliver to: <span class='userNameInAddress'>{userAddress.kasmors__Contact_Name__c}</span>
+                    <p key={userAddress.id} class='userAddress' style='margin: 10px;margin-left: 32px;'>
+                      {userAddress.kasmors__Contact_Street_Address__c},&nbsp;&nbsp; {userAddress.kasmors__Contact_Locality__c}
+                      {userAddress.kasmors__Contact_State__c},&nbsp;&nbsp; {userAddress.kasmors__Contact_Pincode__c}.
+                    </p>
+                    <p style='margin: 10px;margin-left: 32px;' key={userAddress.id}>Mobile:<span
+                        style='color:black'>{userAddress.kasmors__Contact_Phone_Number__c}</span></p>
+                    <p style='margin: 10px;margin-left: 32px;' key={userAddress.id}>Delivery Type :<span
+                        style='color:black'>Pay On Delivery</span></p>
+                    <div key={userAddress.id} class='bottomBorder'>
+                      <button class="addDefaultAddressButton" name={userAddress.Id}
+                        onclick={addDefaultAddressHandler}>ADD Default ADDRESS</button>
+                    </div>
+                  </div>
+                </template>
+              </template>
+            </div>
+          </div>
+        </div> 
+      </section>
+    </template>
+    <!-- POP UP FOR EDIT ADDRESS -->
+    <template if:true={openEditAddressModal}>
+      <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true"
+        aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <div class='addNewAddressLabelInModal'>
+            Edit Address
+            <span class='crossMarkIcon' onclick={addressEditModelHandler}>&#10060;</span>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+            <lightning-record-edit-form record-id={editAddressId} object-api-name="kasmors__Contact_Address__c">
+              <lightning-messages>
+              </lightning-messages>
+              <lightning-output-field field-name="kasmors__Contact_Name__c">
+              </lightning-output-field>
+              <lightning-input-field field-name="kasmors__Contact_Phone_Number__c">
+              </lightning-input-field>
+              <lightning-input-field field-name="kasmors__Contact_Pincode__c"  onchange={pincodeHandler} >
+              </lightning-input-field>
+              <lightning-input-field field-name="kasmors__Contact_Street_Address__c" onchange={streetHandler}>
+              </lightning-input-field>
+              <lightning-input-field field-name="kasmors__Contact_Locality__c" onchange={localityHandler}>
+              </lightning-input-field>
+              <lightning-input-field field-name="kasmors__Contact_City__c" onchange={cityHandler}>
+              </lightning-input-field>
+              <lightning-input-field field-name="kasmors__Contact_State__c" onchange={stateHandler}>
+              </lightning-input-field>
+              <div>
+                <lightning-button class="slds-m-top_small slds-var-m-around_medium" variant="brand" type="submit"
+                  name="update" label="Update" onclick={addressUpdateHandler} >
+                </lightning-button>
+                <lightning-button class="slds-m-top_small slds-var-m-around_medium" variant="brand" label="Close"
+                  name="closeAddress" onclick={addressEditModelHandler}>
+                </lightning-button>
+              </div>
+            </lightning-record-edit-form>
+          </div>
+        </div>
+      </section>
+    </template>
+    <!-- POP UP FOR ADD NEW ADDRESS -->
+    <template if:true={openAddessModel}>
+      <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <div class='addNewAddressLabelInModal'>
+            Add New Address
+            <span class='crossMarkIcon' onclick={addressModelHandler}>&#10060;</span>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            <p class='addressLabel'>Contact Details</p>
+            <lightning-input class='address-form-label slds-form-element_horizontal address-required ' message-when-value-missing="Please enter Name" type='text' placeholder="Name" onchange={nameHandler}  required></lightning-input>
+            <lightning-input class='address-form-label slds-form-element_horizontal address-required ' message-when-value-missing="Please enter Phone Number"  pattern="^[6-9]{1}[0-9]{9}" maxlength="10" type='tel' placeholder="Phone Number"
+              onchange={phoneNumberHandler} required></lightning-input>                                                                                   
+            <p class='addressLabel'>Address</p>
+            <lightning-input class="address-form-label slds-form-element_horizontal address-required " message-when-value-missing="Please enter Pincode" pattern="^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$" maxlength="7" type='tel'  message-when-range-underflow="Please enter a correct pincode"  placeholder=" Pin Code" onchange={pincodeHandler} required></lightning-input>
+            <!-- ([1-9]{1}[0-9]{5}|[1-9]{1}[0-9]{3}\\s[0-9]{3}) -->
+            <lightning-input class='address-form-label slds-form-element_horizontal address-required ' message-when-value-missing="Please enter Address" type='text' placeholder=" Address (House No, Building, Street, Area)"
+              onchange={streetHandler}></lightning-input>
+            <lightning-input class='address-form-label slds-form-element_horizontal address-required ' message-when-value-missing="Please enter Locality / Town" type='text' placeholder=" Locality / Town" onchange={localityHandler} required></lightning-input>
+            <lightning-input class='address-form-label slds-form-element_horizontal address-required ' message-when-value-missing="Please enter City" type='text' placeholder=" City" onchange={cityHandler}></lightning-input>
+            <lightning-input class='address-form-label slds-form-element_horizontal address-required ' message-when-value-missing="Please enter State" type='text' placeholder=" State" onchange={stateHandler}></lightning-input>
+            <p class='saveAddressAsLabel'>Save Address As</p>
+            <div>
+              <button class="saveAddressTypeButton" name='Home' onclick={addressTypeHandler}>Home</button>
+              <button class="saveAddressTypeButton" name='Office' onclick={addressTypeHandler}>Office</button>
+              <input class="saveAddressTypeButton" type='text' onchange={addressInputTypeHandler}>
+            </div>  
+          </div>
+          <footer class="slds-modal__footer">
+            <button class="placeOrderButton" style='width:100%;' onclick={addAdressHandler}>ADD ADDRESS</button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  </div>
+  <div class='navigationContainer'>
+    <a onclick={homeHandler} class='slds-m-around_medium'></a><img class='siteLogo' src={kasmologourl} width="50"
+      height="50" onclick={homeHandler}></a>
+      <!-- PROGRESS BAR STARTS HERE -->
+    <lightning-progress-indicator current-step={currentStep} type="base" variant="base">
+      <lightning-progress-step onclick={goBackToStepOne} label="BAG" value="1"></lightning-progress-step>
+      <lightning-progress-step onclick={goToStepTwo} label="ADDRESS" value="2"></lightning-progress-step>
+      <lightning-progress-step onclick={goToStepThree} label="PAYMENT" value="3"></lightning-progress-step>
+    </lightning-progress-indicator>
+  </div>
+  <!-- Content for BAG -->
+  <div class="stepOne">
+    <div class="slds-grid slds-wrap">
+      <div class="slds-col slds-size_2-of-3">
+        <!-- <div class="availableOffersContainer">
+          <button class='changeAddress' onclick={changeAddressModalHandler}>CHANGE ADDRESS</button>
+          <div class='userAddress'>
+            <template if:false={getUserDefaultAddress.error}>
+              <h1 style='margin:10px;'>Please Select the Default Address</h1>
+            </template>
+            <template if:true={getUserDefaultAddress.data}>
+              <template for:each={getUserDefaultAddress.data} for:item='userAddress'>
+                <div key={userAddress.id}>
+                  &nbsp;&nbsp;&nbsp;&nbsp;Deliver to: <span
+                    class='userName'>{userAddress.Contact_Name__c},&nbsp;{userAddress.Contact_Pincode__c}</span>
+                  <p key={userAddress.id} class='userAddress'>
+                    {userAddress.Contact_Street_Address__c},&nbsp;&nbsp;{userAddress.Contact_Locality__c},&nbsp;&nbsp;
+                    {userAddress.Contact_State__c},&nbsp;&nbsp;{userAddress.Contact_Pincode__c}.
+                  </p>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div> -->
+        <div class="availableOffersContainer">
+          <span class='htmlIconAvailableOffers'>&#9881;</span>
+          <span class='avaiableOffers'>Available Offers</span>
+        </div>
+        <h1 class='title'>My Shopping Bag({totalCartItems.data})</h1>
+        <h1 class='totalAmount'>Total:</h1><span>Rs.&nbsp;{totalAmount.data}</span>
+        <!-- <lightning-formatted-number value={totalAmount.data} format-style="currency" currency-code="USD"></lightning-formatted-number> -->
+        <template if:true={cartproducts}>
+          <div class="productDetail">
+            <template for:each={cartproducts.data} for:item='cartProduct'>
+              <div class="productDetail" key={cartProduct.Id}>
+                <div class="slds-grid slds-wrap">
+                  <div class=" slds-col slds-size_1-of-3 ">
+                    <img class='imgData' src={cartProduct.kasmors__Product_Variant__r.kasmors__Image_URL__c}
+                      alt={cartProduct.kasmors__Product_Variant__r.Name} name={cartProduct.kasmors__Product_Variant__r.kasmors__Product__c}
+                      onclick={productDetails}> <br />
+                  </div>
+                  <div class="slds-col slds-size_2-of-3">  
+                    <p>{cartProduct.kasmors__Product_Variant__r.Name}</p>
+                    <h1 class='productPrice'>Rs.&nbsp;{cartProduct.kasmors__Product_Variant__r.kasmors__Price__c}</h1>
+                    <p><strong>Colour :{cartProduct.kasmors__Product_Variant__r.kasmors__Option_1_Value__c}</strong></p>
+                    <p><strong>Size: :{cartProduct.kasmors__Product_Variant__r.kasmors__Option_2_Value__c}</strong></p>
+                    <strong>Qty:</strong>&nbsp;&nbsp;
+                    <input min="1" max="10" type="number" name={cartProduct.Id} value={cartProduct.kasmors__Quantity__c}
+                      onchange={handleQtyChange}>
+                  </div>
+                </div>
+                <div class='topBorder'>
+                  <button class='removeButton' name={cartProduct.Id} onclick={handleRemove}>REMOVE</button>
+                  <button class='moveToWishList' data-id={cartProduct.Id} name={cartProduct.kasmors__Product_Variant__r.Id}
+                    onclick={wishlistdetails}>Move to WishList</button>
+                </div>
+              </div>
+            </template>
+            <div class="slds-align_absolute-center">
+              <div class="slds-text-align_center">
+                  <p>Add items that you like to your Cart List. Review them anytime and easily move them to the bag.</p>
+                  <button class="placeOrderButton" style='margin:10px' onclick={goToHome}>Continue Shopping</button>
+              </div>
+              </div>
+          </div>
+        </template>
+        <div class='slds-grid slds-wrap productDetail ' style="margin-left:10px;" >
+          <div>
+            <img  src='/sfc/servlet.shepherd/version/renditionDownload?rendition=ORIGINAL_Png&versionId=0685g000002CblQ&operationContext=CHATTER&contentId=05T5g000009EmZ9' width="24px" height="24px" style='margin: 10px;' onclick={goToWishlist}>
+            <span class='addMoreToWishList' onclick={goToWishlist}>Add More From Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="slds-col slds-size_1-of-3">
+        <div class='availableOffersContainer'>
+          <p class='coupons'>COUPONS</p>
+          <div class='bottomBorder'>
+            <span class='applyCoupons'>Apply Coupons  </span>
+            <span>
+              <input type="text" placeholder="Enter Coupon Code" onchange={handleCouponChange}/>
+                    <button onclick={calculateDiscount}>Apply</button>
+                    <!--<button>apply</button>-->
+              </span>
+            
+          </div>
+          <div class='bottomBorder'>
+            <h1 class='productDetailsLabel'>INVOICE DETAILS({totalCartItems.data})</h1>
+            <div><span class='productMRP'>Total MRP</span>
+              <span class='productTotalPrice'>Rs.&nbsp;{totalAmount.data}</span>
+            </div>
+                       
+            <div ><span class='productMRP'>Coupon Discount</span>
+              <span class='productTotalPrice'>{discountAmount.kasmors__DiscountValue__c} </span></span>
+            </div>
+          
+            <div><span class='productMRP'>Delivery Fee</span>
+              <span class='productTotalPrice'>Free</span></div>
+          </div>
+          <div>
+            <span class='totalProductsAmount'>Total Amount</span>
+            <span class='totalPrice'  >Rs.&nbsp;{totalAmount.data}</span>
+          </div>
+          <div>
+            <button class='placeOrderButton' onclick={goToStepTwo}>Place Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content for ADDRESS -->
+  <div class="stepTwo slds-hide">
+    <div class="slds-grid slds-wrap">
+      <div class="slds-size_2-of-3">
+        <div class='selectDeliveryAddress'>Select Delivery Address</div>
+        <div class="availableOffersContainer" style='margin: 2px;'>
+          <button class='changeAddress' onclick={changeAddressModalHandler}>CHANGE ADDRESS</button>
+          <div class='userAddress'>
+            <template if:false={getUserDefaultAddress.error}>
+              <h1 style='margin:5px;'>Please Select the Default Address</h1>
+            </template>
+            <template if:true={getUserDefaultAddress.data}>
+              <template for:each={getUserDefaultAddress.data} for:item='userAddress'>
+                <div key={userAddress.id}><p style='margin-left: 10px;'>Address Type : <span class='userName'>{userAddress.Name}</span></p>
+                  &nbsp;&nbsp;&nbsp;&nbsp;Deliver to: <span style='margin:5px;'
+                    class='userName'>{userAddress.kasmors__Contact_Name__c},&nbsp;{userAddress.Contact_Pincode__c}</span>
+                  <p key={userAddress.id} class='userAddress' style='margin:5px;'>
+                    {userAddress.kasmors__Contact_Street_Address__c},&nbsp;&nbsp;{userAddress.kasmors__Contact_Locality__c},&nbsp;&nbsp;
+                    {userAddress.kasmors__Contact_State__c},&nbsp;&nbsp;{userAddress.kasmors__Contact_Pincode__c}.
+                  </p>
+                </div>
+              </template>
+            </template>
+          </div>
+        </div>
+
+        <p class='defaultAddress'>Default Address</p>
+        <div class="userAddressBlock" style='margin: 2px;'>
+          <!--Default Address-->
+          <template if:true={getUserAddress.data}>
+            <template for:each={getUserAddress.data} for:item='userAddress'>
+              <div class='bottomBorder' key={userAddress.id}>
+                &nbsp;&nbsp;Deliver to: <span class='userNameInAddress'>{userAddress.kasmors__Contact_Name__c}</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<p key={userAddress.id} class='userAddress'
+                  style='margin: 5px;margin-left: 32px;'>
+                  {userAddress.kasmors__Contact_Street_Address__c},&nbsp;&nbsp;{userAddress.kasmors__Contact_Locality__c},&nbsp;&nbsp;
+                  {userAddress.kasmors__Contact_State__c},&nbsp;&nbsp;{userAddress.kasmors__Contact_Pincode__c}.
+                </p>
+                <p style='margin: 5px;margin-left: 32px;' key={userAddress.id}>Mobile:<span
+                    style='color:black'>{userAddress.kasmors__Contact_Phone_Number__c}</span></p>
+                <p style='margin: 5px;margin-left: 32px;' key={userAddress.id}>Delivery Type :<span
+                    style='color:black'>Pay On Delivery</span></p>
+                <div key={userAddress.id} class='bottomBorder'>
+                  <button class='editAddressButton slds-var-m-around_medium' name={userAddress.Id}
+                    onclick={deleteAddressHandler}>Remove</button><button
+                    class='editAddressButton slds-var-m-around_medium' name={userAddress.Id}
+                    onclick={editAddressHandler}>Edit</button>
+                </div>
+              </div>
+            </template>
+          </template>
+          <!-- <p class='userAddress'>
+            Near srinivasa wines, Varthur Rd, HAL Central Township, 
+            Jawahar Nagar, Marathalli, Bengaluru,560037.
+          </p>
+          <p>&nbsp;&nbsp;Mobile:<span style='color:black'>9849569159</span></p>
+          <p>&nbsp;&nbsp;Pay On Delivery</p>
+          <div>
+            <button class='editAddressButton slds-var-m-around_medium' >Remove</button><button class='editAddressButton slds-var-m-around_medium' >Edit</button>
+          </div>  -->
+        </div>
+        <div class='addNewAddressBlock'>
+          <button class='addNewAddressBlockButton' onclick={createAddressHandler}>+ Add New Address</button>
+        </div>
+      </div>
+      <div class="slds-size_1-of-3">
+        <div class='availableOffersContainer'>
+          <h1 class='deliveryEstimate'>DELIVERY ESTIMATES</h1>
+          <template if:true={cartproducts.data}>
+            <template for:each={cartproducts.data} for:item='cartProduct'>
+              <div key={cartProduct.Id} class='bottomBorder'>
+                <div class="slds-grid slds-wrap">
+                  <div>
+                    <img class='addressImage' src={cartProduct.kasmors__Product_Variant__r.kasmors__Image_URL__c}
+                      alt={cartProduct.kasmors__Product_Variant__r.Name}>
+                    <span class='estimatedDelivery'>Estimated delivery by </span><span class='estimatedDeliveryDate'>
+                      {getExpectedDeliveryDate}</span>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </template>
+          <div class='bottomBorder'>
+            <h1 class='productDetailsLabel'>INVOICE DETAILS({totalCartItems.data})</h1>
+            <div><span class='productMRP'>Total MRP</span><span></span><span
+                class='productTotalPrice'><span>Rs.&nbsp;{totalAmount.data}</span></span></div>
+            <div><span class='productMRP'>Discount on MRP</span><span class='productTotalPrice'>Price</span></div>
+            <div><span class='productMRP'>Coupon Discount</span><span class='productTotalPrice'>Price</span></div>
+            <div><span class='productMRP'>Convenience Fee</span><span class='productTotalPrice'>Price</span></div>
+          </div>
+          <div>
+            <span class='totalProductsAmount'>Total Amount</span><span
+              class='totalPrice'><span>Rs.&nbsp;{totalAmount.data}</span></span>
+          </div>
+          <div>
+            <button class='placeOrderButton' onclick={goToStepThree}>Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Content for PAYMENT -->
+  <div class="stepThree slds-hide">
+    <div class="slds-grid slds-wrap">
+      <div class="slds-size_2-of-3">
+        <div class='bankOfferBlock'>
+          <span class='htmlIconAvailableOffers'>&#9881;</span>
+          <span class='bankOfferLabel'>Available Bank Offers</span>
+          <p class='bankOffers'>10% Instant Discount with Federal Bank Credit and Debit Cards
+            on a minimum spend of Rs 2,500. TCA</p>
+        </div>
+        <div class='choosePaymentLabel'>
+          Choose Payment Mode
+        </div>
+        <div>
+          <lightning-tabset variant="vertical">
+            <lightning-tab label="CASH ON DELIVERY">
+              <div class="tabContent1">
+                <strong>Pay on Delivery(Cash/Card/UPI)</strong></br>
+                <P>You can Pay via Cash/Card or UPI enabled app at the time of delivery. </P>
+                <p>Ask your delivery executive for these options.</p>
+                <p><button class="placeOrderButton" onclick={onplaceorderclick}>PLACE ORDERS</button></p>
+              </div>
+            </lightning-tab>
+            <template if:true={orderclick}>
+              <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                  <!-- Modal/Popup Box LWC header here -->
+                  <header class="slds-modal__header">
+                    <h1 style="font-weight: bold; color: #ff3f6c; font-size: large;"><Strong>Confirm Place
+                        Order?</Strong></h1>
+
+
+                    <span class='crossMarkIcon' onclick={oncancelclick}>&#10060;</span>
+
+                    <div class="slds-text-align_center">
+                      <span onclick={onplace}> <button class="confirmbutton" >Confirm</button></span>
+                      <span > <button class="saveAddressTypeButton" onclick={oncancelclick}>Cancel</button></span>
+                    </div>
+                  </header>
+                </div>
+              </section>
+              <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <lightning-tab label="CREDIT/DEBIT CARD">
+              <div class="tabContent2">
+                <h3> Enter Card Details</h3>
+              </div>
+            </lightning-tab>
+            <lightning-tab label="PHONEPE/GOOGLE PAY/BHIM UPI">
+              <div class="tabContent3">
+                <h3> Enter Details</h3>
+              </div>
+            </lightning-tab>
+            <lightning-tab label="NET BANKING">
+              <div class="tabContent4">
+                <h3> Enter Details</h3>
+              </div>
+            </lightning-tab>
+          </lightning-tabset>
+        </div>
+
+        <!-- <div class='choosePaymentBlock'> -->
+        <!-- <div>
+          <div >
+           
+             <span class='choosePaymentBaseTab' onclick={paymentTabHadler}>PHONEPE/GOOGLE PAY/BHIM UPI</span>
+            <span class='choosePaymentBaseTab' onclick={paymentTabHadler}>CASH ON DELIVERY (CASH/CARD/UPI)</span>
+            <span class='choosePaymentBaseTab' onclick={paymentTabHadler}>CREDIT/DEBIT CARD</span>
+            <span class='choosePaymentBaseTab' onclick={paymentTabHadler}>PAYTM/PAYZAPP/WALLETS</span>
+            <span class='choosePaymentBaseTab' onclick={paymentTabHadler}>NET BANKING</span>
+            <span class='choosePaymentBaseTab' onclick={paymentTabHadler}>EMI/PAYLATER</span> 
+          </div>
+        </div> 
+     </div> -->
+
+      </div>
+      <div class="slds-size_1-of-3">
+        <div class='availableOffersContainer'>
+          <div class='bottomBorder'>
+            <h1 class='productDetailsLabel'>INVOICE DETAILS({totalCartItems.data})</h1>
+            <div><span class='productMRP'>Total MRP</span><span></span><span
+                class='productTotalPrice'><span>Rs.&nbsp;{totalAmount.data}</span></span></div>
+            <div><span class='productMRP'>Discount on MRP</span><span class='productTotalPrice'>Price</span></div>
+            <div><span class='productMRP'>Coupon Discount</span><span class='productTotalPrice'>Price</span></div>
+            <div><span class='productMRP'>Convenience Fee</span><span class='productTotalPrice'>Price</span></div>
+          </div>
+          <div>
+            <span class='totalProductsAmount'>Total Amount</span><span
+              class='totalPrice'><span>Rs.&nbsp;{totalAmount.data}</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

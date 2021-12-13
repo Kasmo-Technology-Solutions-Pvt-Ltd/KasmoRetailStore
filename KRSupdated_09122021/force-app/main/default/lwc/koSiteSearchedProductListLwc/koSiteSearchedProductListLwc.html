@@ -1,0 +1,23 @@
+<template>
+    <div>
+        <template if:true={receivedSearchKey}>
+                <template if:true={productSearch.data}>
+                    <lightning-card title='Search Results'>
+                        <lightning-layout>
+                            <div class='slds-grid slds-wrap'>
+                            <template for:each={productSearch.data} for:item='searchProduct'>
+                                <lightning-layout-item key={searchProduct.Id}  class='slds-var-m-around_medium slds-size_1-of-12'>
+                                        <lightning-card>
+                                            <img style='cursor: pointer;' src={searchProduct.kasmors__Image_URL__c} alt={searchProduct.Name} name={searchProduct.Id} onclick={searchedProductDetails}> 
+                                            <h1>{searchProduct.Name}</h1>
+                                        </lightning-card>
+                                    </lightning-layout-item>
+                                </template>
+                                </div>
+                        </lightning-layout>
+                    </lightning-card>            
+                </template>
+            
+        </template>
+    </div>
+</template>

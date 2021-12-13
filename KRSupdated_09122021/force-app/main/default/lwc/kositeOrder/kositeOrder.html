@@ -1,0 +1,135 @@
+<template>
+    <div>
+        <div class="slds-grid slds-wrap slds-p-around_small">
+            <div class="slds-size_2-of-4">
+                <div class=" slds-scrollable_y" style="height:45rem;">
+                    <lightning-tabset variant="vertical">
+                        <lightning-tab label="ORDERS">
+                            <div class="tabContent1"> 
+                                <template if:true={getorderdata.data}>
+                                    <template for:each={getorderdata.data} for:item="order">
+                                        <div class='slds-grid slds-wrap slds-box slds-p-around-small ' key={order.Id}>
+                                            <div key={order.Id} class="  slds-col slds-size_1-of-2">
+                                                <h class="orderId" name={order.Id} onclick={onorderclick}>
+                                                    Invoice Number:{order.Name}</h>
+                                                <br>
+                                                <h>Invoice Date:{order.kasmors__StartDate__c}</h>
+                                                <template if:true={order.Status__c}></template>
+                                                <button class='applyButton' name={order.Id}
+                                                    onclick={cancelClick}>Cancel</button>
+                                                <div style="font-weight: bold;">Order Status
+                                                    <h class='Status'>{order.kasmors__Status__c}</h>
+
+
+                                                </div>
+                                                <br>
+                                                
+                                                <div style="font-weight: bold;"> Invoice Amount:
+                                                    <h class='Status'>{order.kasmors__Total_Price__c}</h>
+                                                    
+                                                </div>
+                                            </div>
+                                            <span key={order.Id} class="slds-col slds-size_1-of-2">
+
+                                                <h style="font-weight: bold; font-size: 18;">Delivery Address:</h>
+                                                <br>
+                                              <h3>Name:{order.kasmors__Contact_Address__r.kasmors__Contact_Name__c} </h3> 
+                                               
+                                                <h3>{order.kasmors__Contact_Address__r.kasmors__Contact_Locality__c}</h3>
+                                                <br>
+                                                <h3>{order.kasmors__Contact_Address__r.kasmors__Contact_City__c},</h3>
+                                                
+                                                <h3> {order.kasmors__Contact_Address__r.kasmors__Contact_State__c},</h3>
+                                               
+                                                <h3> {order.kasmors__Contact_Address__r.kasmors__Contact_Pincode__c}.</h3>
+                                                <br>
+                                                <h3>Phone:{order.kasmors__Contact_Address__r.Contact_Phone_Number__c}.</h3>
+                                               
+                                            </span>
+                                        </div>
+                                    </template>
+                                </template>
+
+                            </div>
+                        </lightning-tab>
+                       <!-- <lightning-tab label="Order Return">
+                            <div class="tabContent2">
+                                <template if:true={getdeliverd.data}>
+                                    <template for:each={getdeliverd.data} for:item="order">
+                                        <div class='slds-grid slds-wrap slds-box slds-p-around-small' key={order.Id}>
+                                            <div key={order.Id} class="slds-col slds-size_1-of-2">
+                                                <h class="orderId" name={order.Id}>
+                                                    Invoice Number:{order.Name}</h>
+                                                <br>
+                                                <h class='slds-p-around_small'>Invoice Date:{order.StartDate__c}</h>
+                                                 <template if:true={order.Status__c}></template> 
+                                                <button class='applyButton' name={order.Id}>Return</button>
+                                                <div style="font-weight: bold;">Order Status
+                                                    <h class='Status'>{order.Status__c}</h>
+                                                </div>
+                                            </div>
+                                            <span key={order.Id} class="slds-col slds-size_1-of-2">
+
+                                                <h style="font-weight: bold; font-size: 18;">Delivery Address:</h>
+                                                <br>
+                                                <h>Name:{order.Delivery_Name__c} </h>
+                                                &nbsp;
+                                                <h>Type:{order.delivery_AddressName__c}.</h>
+                                                <br>
+                                                <h>{order.Delivery_Street__c}</h>
+                                                &nbsp;
+                                                <h>{order.Delivery_Locality__c}</h>
+                                                <br>
+                                                <h>{order.delivery_City__c},</h>
+                                                &nbsp;
+                                                <h> {order.Delivery_State__c},</h>
+                                                &nbsp;
+                                                <h> {order.Delivery_Postalcode__c}.</h>
+                                                <br>
+                                                <h>Phone:{order.Delivery_Phone__c}.</h>
+                                            </span>
+                                        </div>
+                                    </template>
+                                </template>
+
+                            </div>
+                        </lightning-tab>-->
+
+
+                    </lightning-tabset>
+                </div>
+
+            </div>
+            <span class="detail slds-col slds-size_2-of-4 ">
+
+                <!-- <template if:true={orderItemList}> -->
+                <template for:each={orderItemList} for:item="orderitem">
+                    <div class="slds-box slds-grid slds-wrap slds-m-around_small" key={orderitem.Id}>
+
+                        <span class="slds-col slds-size_1-of-3" key={orderitem.Id}>
+
+                            <img class='imgData' src={orderitem.kasmors__Product_Variant__r.kasmors__Image_URL__c}>
+                            <br />
+                        </span>
+                        <span class="slds-col slds-size_2-of-3">
+                            <h style="font-weight: bold; font-size: 18;">{orderitem.kasmors__Product_Variant__r.Name}</h>
+                            <br>
+                            <h>UnitPrice:{orderitem.kasmors__UnitPrice__c}</h>&nbsp;&nbsp;&nbsp;<h>
+                                Quantity:{orderitem.kasmors__Quantity__c}</h>
+
+                        </span>
+                        <span class="slds-col slds-size_3-of-3">
+                            <h style="font-weight: bold; font-size: 18;">TotalPrice:{orderitem.kasmors__TotalPrice__c}</h>
+
+
+                        </span>
+                    </div>
+                </template>
+                <!-- </template> -->
+
+            </span>
+
+
+        </div>
+    </div>
+</template>

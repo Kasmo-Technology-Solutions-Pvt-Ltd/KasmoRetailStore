@@ -1,0 +1,128 @@
+<template>
+    <!-- <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+        <div class="slds-size_1-of-2">
+            <template if:true={productVarient.data}>
+                <template for:each={productVarient.data} for:item='Variant'>
+                    <div key={Variant.Id}>
+                        <img class='mainImage' src={Variant.Image_URL__c} alt={Variant.Name}> 
+                    </div>
+                </template>
+            </template>
+        </div>
+        <div class="slds-size_1-of-2">
+            <div>
+                <template if:true={productVarient.data}>
+                    <template for:each={productVarient.data} for:item='Variant'>
+                        <div class='container' key={Variant.Id}>
+                            <h1 class='productName'><b></b>{Variant.Name}</b></h1>
+                            <h1 class='productRating'>Rating</h1>
+                            <h1 class='productPrice'>Rs.&nbsp;{Variant.Price__c}</h1>
+                            <h1 class='inclusiveAllTaxs'>inclusive of all taxes</h1>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <div>
+                <template if:true={productsWithVarients.data}>
+                    <span class='moreColors'>MORE COLORS</span><br/>
+                    <div class='productColorDiv'>
+                        <template for:each={productsWithVarients.data} for:item='ProductVariant'>
+                            <div class='productCard' key={ProductVariant.Id}> 
+                             <img class='productImage' src={ProductVariant.Image_URL__c} alt={ProductVariant.Name} name={ProductVariant.Id} onclick={ProductVariantDetails}> 
+                            </div>
+                        </template>
+                        <div>
+                            <h1 class='selectSize'>SELECT SIZE</h1><br/>
+                            <template if:true={productVariantSizes.data}>
+                               <template for:each={productVariantSizes.data} for:item='ProductVariantSize'>
+                                <button class='productVariantSize slds-m-around_xx-small' key={ProductVariantSize.Id}>{ProductVariantSize.Product_Variant_Size__c}</button>
+                               </template>
+                               <br/><button class='addToCartButton'>ADD TO BAG</button>
+                               <button class='addToWhishlist'>WISHLIST</button>
+                            </template>
+                        </div>
+                        <div>
+                            <template if:true={productVarient.data}>
+                              <h1 class='productDetails'>PRODUCT DETAILS</h1><br/> 
+                                <template for:each={productVarient.data} for:item='Variant'>
+                                    <p class='productDescriptionContent' key={Variant.Id}>
+                                        Pink solid casual shirt, has a spread collar, long sleeves, 
+                                        curved hem, one patch pocket
+                                    </p>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+      </div> -->
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <template if:true={productVarientNew}>
+                        <template for:each={productVarientNew.data} for:item='Variant'>
+                            <div key={Variant.Id}>
+                                <img class='mainImage' src={Variant.kasmors__Image_URL__c} alt={Variant.Name}> 
+                            </div>
+                        </template>
+                    </template>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <div>
+                        <template if:true={productVarientNew}>
+                            <template for:each={productVarientNew.data} for:item='Variant'>
+                                <div class='container' key={Variant.Id}>
+                                    <h1 class='productName'><b></b>{Variant.Name}</b></h1>
+                                    <h1 class='productRating'>Rating</h1>
+                                    <!-- <template if:true={productVarientNewSizes.data}>
+                                        <template for:each={productVarientNewSizes.data} for:item='VariantPrice'>
+                                            <h1 key={VariantPrice.Id} class='productPrice'>Rs.&nbsp;{VariantPrice.Price__c}</h1>
+                                        </template>
+                                    </template> -->
+                                    <h1 class='productPrice'>Rs.&nbsp;{Variant.kasmors__Price__c}</h1>
+                                    <h1 class='inclusiveAllTaxs'>inclusive of all taxes</h1>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                    <div>
+                        <template if:true={productsWithVarientsNew}>
+                            <span class='moreColors'>MORE COLORS</span><br/>
+                            <div class='productColorDiv'>
+                                <template for:each={productsWithVarientsNew.data} for:item='ProductVariant'>
+                                    <div class='productCard' key={ProductVariant.Id}> 
+                                     <img class='productImage' src={ProductVariant.kasmors__Image_URL__c} alt={ProductVariant.Name} name={ProductVariant.Id} onclick={ProductVariantDetailsNew}> 
+                                    </div>
+                                </template>
+                                <div> 
+                                    <h1 class='selectSize'>SELECT SIZE</h1><br/>
+                                    <template if:true={productVarientNewSizes}>
+                                        <template for:each={productVarientNewSizes.data} for:item='Variant'>
+                                         <lightning-button key={Variant.Id} variant="brand-outline" class='slds-var-m-around_xx-small' name={Variant.Id} onclick={SizeButtonHandler} label={Variant.kasmors__Option_2_Value__c}></lightning-button>
+                                            <!-- <button class={changeButtonStyle} type="button" key={Variant.Id} onclick={SizeButtonHandler}  name={Variant.Id}>{Variant.Option_2_Value__c}</button> -->
+                                        </template>
+                                            <div style='margin:5px'>
+                                                <button class='addToCartButton' onclick={cartdetails} >ADD TO BAG</button>
+                                                <button class='addToWhishlist' onclick={wishlistdetails}>WISHLIST</button>
+                                            </div>
+                                    </template>
+                                </div>
+                                <div>
+                                    <template if:true={productVarientNew}>
+                                      <h1 class='productDetails'>PRODUCT DETAILS</h1><br/> 
+                                        <template for:each={productVarientNew.data} for:item='Variant'>
+                                            <p class='productDescriptionContent' key={Variant.Id}>
+                                                {Variant.kasmors__Discription__c}
+                                            </p>
+                                        </template>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:false={productsWithVarientsNew}>
+                            <h1>No Product Variants</h1>
+                        </template>
+                    </div>
+                </div>
+              </div>        
+</template>

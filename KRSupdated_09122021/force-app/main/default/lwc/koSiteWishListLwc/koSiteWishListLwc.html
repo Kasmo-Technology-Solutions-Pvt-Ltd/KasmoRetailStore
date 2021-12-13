@@ -1,0 +1,47 @@
+<template>
+    <lightning-card>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1">
+            <div class='wishListContainer'>
+                <template if:true={wishListProduct}>
+                    <template for:each={wishListProduct.data} for:item='wishProduct'>
+                        <div key={wishProduct.Id} class='slds-var-m-around_medium'>
+                            <div>
+                                <img class='productImage' src={wishProduct.kasmors__Product_Variant__r.kasmors__Image_URL__c} alt={wishProduct.kasmors__Product_Variant__r.Name} name={wishProduct.kasmors__Product_Variant__r.kasmors__Product__c} onclick={productDetails}> 
+                            </div>
+                            <div>
+                            <p class='productName'>{wishProduct.kasmors__Product_Variant__r.Name}</p>
+                            <span class='productPrice'>Rs.&nbsp;{wishProduct.kasmors__Product_Variant__r.kasmors__Price__c}</span><span class='productSize'>Size: {wishProduct.kasmors__Product_Variant__r.kasmors__Option_2_Value__c}</span>
+                            <div>
+                            <button class='removeButton' name={wishProduct.Id} onclick={removeHandler}>Remove</button>
+                            <button class='moveToBag' data-id={wishProduct.Id} name={wishProduct.kasmors__Product_Variant__r.Id} onclick={moveToBagHandler}>Move to Bag</button>
+                            </div>
+                            </div>
+                        </div> 
+                    </template>
+                </template>
+                
+                <!-- <template if:false={wishListProduct.data}>
+                    kasmoFashion
+                    <lightning-card style="height:1000px;width:1000px">
+                    <div class="slds-align_absolute-center">
+                    <div class="slds-text-align_center">
+                        <Strong><p>YOUR WISHLIST IS EMPTY</p></Strong>
+                        <p>Add items that you like to your wishlist. Review them anytime and easily move them to the bag.</p>
+                        <button class="continueShopping" onclick={goToHome}>Continue Shopping</button>
+                    </div>
+                    </div>
+                </lightning-card>
+                </template>  -->
+                </div>
+        </div>
+    </div>
+    <div class="slds-align_absolute-center">
+        <div class="slds-text-align_center">
+            <p>Add items that you like to your wishlist. Review them anytime and easily move them to the bag.</p>
+            <button class="continueShopping" onclick={goToHome}>Continue Shopping</button>
+        </div>
+        </div>
+</lightning-card>
+    
+</template>

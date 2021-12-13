@@ -1,0 +1,106 @@
+<template> 
+    <!--Saichaitanya-->
+        <div class='accountContainer'>
+            <span class='accountLabel'>Account</span>
+            <template if:true={userData.data}>
+                <template for:each={userData.data} for:item='user'>
+                    <div key={user.Id}>
+                    <div class='accountName'>{user.Name}</div>
+                    </div>
+                </template>
+            </template>
+         </div>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3">
+            <div class='verticalSideContainer'>
+                <div class='verticalSideItem'>
+                    Overview
+                </div>
+                <div class='verticalSideItem'>
+                    <div class='ordersLabel'>
+                        Orders
+                    </div>
+                    <div>
+                        Orders and Returns
+                    </div>
+                </div>
+                <div class='verticalSideItem'>
+                    <div class='ordersLabel'>
+                        Credits
+                    </div>
+                    <div>
+                        Coupons
+                    </div>
+                </div>
+                <div class='verticalSideItem'>
+                    <div class='ordersLabel'>
+                        Account
+                    </div>
+                    <div>
+                        Profile
+                    </div>                
+                </div>
+                <div class='verticalSideItem'>
+                    <div class='ordersLabel'>
+                        Legal
+                    </div>
+                    <div>
+                        Terms of Use
+                    </div> 
+                    <div>
+                        Privacy Policy
+                    </div>               
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_2-of-3">
+            <div class='profileEditCard'>
+                <div class='profileEditLabel'>
+                    Edit Details
+                </div>
+                <template if:true={userData.data}>
+                    <template for:each={userData.data} for:item='user'>
+                        <div key={user.Id}>
+                            <input  type='tel' maxlength='10' class='textInput' value={user.MobilePhone} onchange={mobileHandler}><br/>
+                            <input  type='text' class='textInput' value={user.FirstName} onchange={firstNameHandler}><br/>
+                            <input type='text'  class='textInput' value={user.LastName} onchange={lastNameHandler}><br/>
+                            <input type='text' class='textInput' value={user.Email} onchange={emailHandler}><br/>
+                            <div>
+                            <button style='margin-left: 42px;' class='genderButtonMale' value="Male" onclick={genderHandler}>Male</button><button  value='Female' class='genderButtonFemale' onclick={genderHandler}>Female</button>
+                            </div>
+                            <input type='Date' value={user.Birthdate} class='textInput' onchange={birthDateHandler}><br/>
+                            <div class='alternateMobileDetails'>Alternate mobile details</div>
+                            <input type='tel' maxlength='10' value={user.AssistantPhone} class='textInput' onchange={assistPhoneHandler}><br/>
+                            <input type='text' value={user.AssistantName} class='textInput' onchange={assistNameHandler}><br/>
+                            <button class='saveDetailsButton' onclick={userUpdateHandler} name={user.Id}>Save Details</button>
+                            <button class='changePasswordButton' onclick={changePasswordHandler}>Change Password</button>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <!-- <lightning-card class='slds-m-var-around_medium'>
+                <lightning-record-edit-form record-id={recordId}
+            object-api-name="User">
+            <lightning-messages>
+            </lightning-messages>
+            <lightning-output-field field-name="Name">
+            </lightning-output-field>
+            <lightning-input-field field-name="FirstName">
+            </lightning-input-field>
+            <lightning-input-field field-name="LastName">
+            </lightning-input-field>
+            <lightning-input-field field-name="Email">
+            </lightning-input-field>
+            <lightning-button
+            class="slds-m-top_small"
+            variant="brand"
+            style='margin-left:700px'
+            type="submit"
+            name="update"
+            label="Update">
+            </lightning-button>
+            </lightning-record-edit-form> 
+            </lightning-card> -->
+ </div>
+</div>
+</template>

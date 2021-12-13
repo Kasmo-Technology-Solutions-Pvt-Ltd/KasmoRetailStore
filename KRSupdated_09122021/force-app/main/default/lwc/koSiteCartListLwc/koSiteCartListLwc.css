@@ -1,0 +1,477 @@
+.imgData{
+    background-color: rgb(234, 220, 50);
+    border-radius: 2px;
+    width: 80px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+}
+.productDetail{
+    background: #fff;
+    font-size: 14px;
+    border: 1px solid #eaeaec;
+    border-radius: 4px;
+    position: relative;
+    padding: 12px 12px 0;
+    margin: 10px;
+}
+.removeButton{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #696b79;
+    padding: 0;
+    height: 20px;
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 10px;
+}
+.moveToWishList{
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0;
+    height: 20px;
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #ff3f6c!important;
+    margin: 10px;
+    padding-left: 36px;
+}
+.topBorder{
+    border-top: 1px solid #eaeaec;
+}
+.bottomBorder{
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f5f5f6;
+}
+.productPrice{
+    color: #282c3f;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    float: right;
+}
+.title{
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    padding-left: 20px;
+}
+.addMoreToWishList{
+    text-decoration: none;
+    background-color: #fff;
+    color: inherit;
+    position: relative;
+    font-weight: 600;
+    padding-left: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.totalAmount{
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    padding-left: 500px;
+}
+.htmlIcon{
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.addMoreToWishLabel{
+    text-decoration: none;
+    background-color: #fff;
+    color: inherit;
+    position: relative;
+    font-weight: 600;
+    padding-left:20px;
+    font-size: 16px;
+    cursor:pointer;
+}
+.userName{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 5px;
+}
+.userAddress{
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    margin: 10px;
+}
+.changeAddress{
+    padding: 8px 16px;
+    border: 1px solid #ff3f6c;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ff3f6c;
+    margin-right: 4px;
+    float: right;
+    background: white;
+}
+.avaiableOffers{
+    text-decoration: none;
+    background-color: #fff;
+    color: inherit;
+    position: relative;
+    font-weight: 600;
+    padding-left:10px;
+    font-size: 18px;
+}
+.availableOffersContainer{
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 16px 18px 12px;
+    border: 1px solid #eaeaec;
+    border-radius: 4px;
+    font-size: 13px;
+    position: relative;
+    margin: 10px;
+}
+.htmlIconAvailableOffers{
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer; 
+}
+.coupons{
+    font-size: 12px;
+    font-weight: 600;
+    color: #535766;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+.applyCoupons{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 7px 0;
+}
+.applyButton{
+    float: right;
+    padding: 4px 16px;
+    position: absolute;
+    color: #ff3f6c;
+    border: 1px solid #ff3f6c;
+    border-radius: 3px;
+    text-transform: none;
+    cursor: pointer;
+    font-weight: 600;
+    right: 0;
+    background: #fff;
+    font-size: 12px;
+}
+.productDetailsLabel{
+    font-size: 12px;
+    font-weight: 600;
+    margin: 24px 0 16px;
+    color: #535766;
+}
+.productMRP{
+    margin-bottom: 12px;
+    line-height: 16px;
+}
+.productTotalPrice{
+    color: #282c3f;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+    float: right;
+}
+.totalProductsAmount{
+    font-weight: 600;
+    font-size: 15px;
+    color: #3e4152;
+}
+.totalPrice{
+    font-weight: 600;
+    font-size: 15px;
+    color: #3e4152;
+    cursor: pointer;
+    float: right;
+}
+.placeOrderButton{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    background: #ff3f6c;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 350px;
+    margin-top: 10px;
+}
+.selectDeliveryAddress{
+    margin: 12px 0 16px;
+    font-weight: 600;
+    color: #282c3f;
+    font-size: 18px;
+}
+.addNewAddress{
+    padding: 8px 16px;
+    border: 1px solid #ff3f6c;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ff3f6c;
+    margin-right: 4px;
+    float: right;
+    background: white;
+    margin-top: 10px;
+}
+.defaultAddress{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 12px 0 16px;
+    color: #535766;
+}
+.userNameInAddress{
+    font-weight: 600;
+    font-size: 14px;
+    color: #282c3f;
+    text-transform: capitalize;
+    word-break: break-all;
+}
+.userAddressBlock{
+    border: 1px solid #eaeaec;
+    margin-bottom: 8px;
+    vertical-align: top;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.editAddressButton{
+    color: #282c3f;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .5px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid #282c3f;
+    border-radius: 4px;
+    padding: 6.5px 16px;
+}
+.addNewAddressBlock{
+    box-shadow: 0 0 4px rgb(40 44 63 / 8%);
+    height: 72px;
+    padding: 27px 0 26px 19px;
+    margin-bottom: 25px;
+    vertical-align: top;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    border: 1px dashed #d4d5d9;
+}
+.addNewAddressBlockButton{
+    position: relative;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ff3f6c;
+    border: none;
+    background: white;
+    padding-left: 110px;
+}
+.addressImage{
+    background-color: #eadc32;
+    border-radius: 2px;
+    width: 40px;
+    height: 50px;
+    margin: 10px;
+}
+.deliveryEstimate{
+    padding: 16px 16px 8px;
+    text-transform: uppercase;
+    color: #535766;
+    font-size: 12px;
+    font-weight: 600;
+}
+.estimatedDelivery{
+    color: #282c3f;
+    font-size: 14px;
+}
+.estimatedDeliveryDate{
+    font-weight: 600;
+    font-size: 14px;
+    color: #282c3f;
+    text-transform: capitalize;
+    word-break: break-all;
+}
+.bankOfferBlock{
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 16px 18px 12px;
+    border: 1px solid #eaeaec;
+    border-radius: 4px;
+    font-size: 13px;
+    position: relative;
+}
+.bankOfferLabel{
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 6px;
+    margin-bottom: 12px;
+}
+.bankOffers{
+    padding-left: 15px;
+    text-indent: -15px;
+    list-style: none;
+    white-space: normal;
+    margin-bottom: 8px;
+}
+.choosePaymentLabel{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 26px 12px;
+}
+.choosePaymentBlock{
+    border: 1px solid #eaeaec;
+    border-radius: 4px;
+    background-color: #f4f4f5;
+}
+.choosePaymentBaseTab{
+    border-bottom: 1px solid #eaeaec;
+    border-right: 1px solid #eaeaec;
+    border-left: 5px solid #f4f4f5;
+    border-top: 0;
+    font-size: 14px;
+    cursor: pointer;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    padding-left: 8px;
+}
+.selectedpaymentTab{
+    background-color: #fff;
+    border-left-color: #ff3f6c;
+    border-right: 0;
+    color: #ff3f6c;
+}
+.tabContentBlock{
+    vertical-align: top;
+    display: table-cell;
+    width: 65%;
+    padding: 24px 32px;
+    background: #fff;
+    border-radius: 0 4px 4px 0;
+}
+.siteLogo{
+    display: inline-block;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+.navigationContainer{
+    background-color: #fff;
+    width: 100%;
+    min-height: 78px;
+    max-width: 92%;
+    margin: auto;
+}
+.addressLabel{
+    padding: 16px 16px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #282c3f;
+}
+.pincodeInputLabel{
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 13px;
+    color: #94969f;
+    transition-property: top;
+    transition-duration: .1s;
+}
+.pincodeInput{
+    width: 90%;
+    font-size: 14px;
+    padding: 12px;
+    border: 1px solid #d4d5d9;
+    background-color: transparent;
+    font-weight: 300;
+    border-radius: 4px;
+    line-height: 14px;
+    margin: 5px;
+}
+.addNewAddressLabelInModal{
+    font-size: 14px;
+    color: #535766;
+    font-weight: 600;
+    padding: 20px 10px 20px 30px;
+    background: #fff;
+    border-bottom: 1px solid #d5d6d9;
+}
+.saveAddressAsLabel{
+    padding: 16px 16px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #282c3f;
+}
+
+.addAddressButtonInModal{
+    position: absolute;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    box-shadow: 0 -1px 4px 0 #0000004d;
+}
+.crossMarkIcon{
+    float: right;
+    font: icon;
+    cursor: pointer;
+}
+.addDefaultAddressButton{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    background: #ff3f6c;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;  
+    margin-left: 150px;
+}
+.saveAddressTypeButton{
+    padding: 4px 16px;
+    color: #ff3f6c;
+    border: 1px solid #ff3f6c;
+    border-radius: 5px;
+    text-transform: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: #fff;
+    margin: 10px;
+}
+.confirmbutton{
+    padding: 4px 16px;
+    color: #fff;
+    border-radius: 5px;
+    border-color:#ff3f6c ;
+    text-transform: none;
+    cursor: pointer;
+    font-weight: 600;
+    background:#ff3f6c ;
+    
+    margin: 2px;
+}

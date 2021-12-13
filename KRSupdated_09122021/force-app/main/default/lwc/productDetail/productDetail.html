@@ -1,0 +1,11 @@
+<template>
+   <lightning-card>
+       <template if:true={productVariantId.data}>
+           <template for:each={productVariantId.data} for:item="productVariantId">
+            <div key={productVar.Id}>
+                <img class='mainImage' src={productVar.kasmors__Image_Url__c} alt={variant.Name}> 
+            </div>
+           </template>
+       </template>
+   </lightning-card> 
+</template>

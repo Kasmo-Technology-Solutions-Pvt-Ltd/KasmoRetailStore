@@ -1,0 +1,88 @@
+<template>
+    <!-- <lightning-button variant="brand" label="delete" onclick={ondelclick}></lightning-button> -->
+    <div class="slds-box slds-grid slds-wrap slds-size_3-of-3">
+        <div class="slds-col slds-size_1-of-3" onclick={onimageclick}>
+            <img src={logo} class="imgsize" onclick={onimageclick}>
+        </div>
+        <div class="head slds-col slds-size_2-of-3 ">
+            <h class="slds-p-around_medium" style="font-weight: bold; font-size: large;  color: rgba(11, 127, 243, 0.774);;">Keep Shopping With us
+            </h>
+        </div>
+        <!-- <div class=" slds-col slds-size_3-of-3">
+            <lightning-icon class='slds-m-around_small' icon-name="utility:wellness" alternative-text="WishList" title='WishList' onclick={wishListHandler}></lightning-icon>
+          
+        </div > -->
+    </div>
+    <div>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_2-of-3">
+                <div>
+                    <lightning-tabset variant="vertical">
+                        <lightning-tab label="ORDERS">
+                            <div class="tabContent1">
+
+                                <template if:true={getorder.data}>
+                                    <template for:each={getorder.data} for:item="order">
+                                        <div class="productDetail" key={order.Id}>
+                                            <div class="slds-box slds-grid slds-wrap slds-m-around_small">
+                                                <div class=" slds-col slds-size_1-of-3 ">
+                                                    <img class='imgData' src={order.Product_Variant__r.kasmors__Image_URL__c}
+                                                        alt={order.kasmors__Product_Variant__r.Name}
+                                                        name={order.kasmors__Product_Variant__r.Product__c}> <br />
+                                                </div>
+                                                <div class="slds-col slds-size_2-of-3">
+                                                    <p style="font-weight: bold;">{order.Product_Variant__r.Name}</p>
+
+
+                                                    <p>Size:{order.kasmors__Product_Variant__r.kasmors__Option_2_Value__c} | Colour
+                                                        :{order.kasmors__Product_Variant__r.kasmors__Option_1_Value__c} |
+                                                        Qty:{order.kasmors__Quantity__c}
+                                                    </p>
+                                                    <h1 class='productPrice' style="font-weight: bold;">
+                                                        Rs.&nbsp;{order.Product_Variant__r.kasmors__Price__c}</h1>
+                                                    <div value={order.id}>
+                                                        <button class="butt slds-align_absolute-right" name={order.id}>
+                                                            <lightning-icon icon-name="utility:chevronright"
+                                                                value={order.id} onclick={onorderbuttonclick}
+                                                                name={order.id}></lightning-icon>
+                                                        </button>
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </template>
+                                </template>
+
+                            </div>
+                        </lightning-tab>
+                        <lightning-tab label="Order Return">
+                            <div class="tabContent2">
+                                <h3> </h3>
+                            </div>
+                        </lightning-tab>
+
+                    </lightning-tabset>
+                </div>
+
+            </div>
+            <span class="detail slds-col slds-size_1-of-3 ">
+                <template if:true={showdetail}>
+                    <lightning-card>
+                        <h1>Shipping Address:</h1>
+                    </lightning-card>
+
+                </template>
+            </span>
+
+
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Option_1_Label__c</fullName>
+    <externalId>false</externalId>
+    <label>Option 1 Label</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Color</fullName>
+                <default>false</default>
+                <label>Color</label>
+            </value>
+            <value>
+                <fullName>Size</fullName>
+                <default>false</default>
+                <label>Size</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

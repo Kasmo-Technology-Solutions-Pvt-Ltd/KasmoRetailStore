@@ -1,0 +1,59 @@
+<template>
+    <div>
+        <a onclick={homeHandler}  class='slds-m-around_medium'><img src={kasmologourl} width="50" height="50"></a>
+        <template for:each={categories.data} for:item='category'>
+            <a class='button' key={category.Id} onclick={tabCategoryMethod} onmouseover={subCategoryHandler} label={category.Name} name={category.Id}>{category.Name}</a>
+        </template> 
+        
+        <input type='text' placeholder='Search for Products,Brands,More...' onkeyup={searchKeyHandler} style='width:30%;height:32px;margin-left:80px;'/>
+        <template if:true={showProfileModel}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                <span class='crossMarkIcon' onclick={closeProfileHandler}>&#10060;</span>
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Account Details</h2>
+                <p class="slds-m-top_x-small">Please Login / Sign Up to access account and manage orders <button class='btnLogin' onclick={navigateToLoginPage}>LOGIN / SIGNUP</button></p>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p class='profilelst'>Welcome</p>
+                    <p style='margin-left: 9px;'><strong>Hello {name}</strong></p>
+                    <p class='profilelst' onclick={navigateToOrders}>Orders</p>
+                    <!--<p class='profilelst'>Gift Cards</p> -->
+                    <p class='profilelst' onclick={wishListHandler}>Wishlist</p>
+                    <!--<p class='profilelst'>Coupons / Gift Cards</p>
+                    <p class='profilelst'>Saved Cards</p>-->
+                    <!--<p class='profilelst' onclick={CheckOutHandler}>Saved Addresses</p>-->
+                <template if:false={isGuest}>
+                    <p class='profilelst' onclick={navigateToEditPage}>Edit Profile</p>
+                    <a style='text-decoration: none;' href={logoutLink}><span class='profilelst'>Logout</span></a>
+                </template>
+            </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <img  src={profileurl} width="24px" height="24px"  style='margin: 10px;' onclick={profileHandler}>
+        <img  src={wishListurl} width="24px" height="24px" style='margin: 10px;' onclick={wishListHandler}>
+        <a class='slds-wrap'>
+        <img  src={carturl} width="24px" height="24px" style='margin: 10px;' onclick={CheckOutHandler}>
+        <span class='bagCount'>{totalCartItems.data}</span>
+        </a></div> <a class="phone_top" href="tel://9438843343"><strong><span>Call:</span>+9142323221</strong></a>
+    
+    <!--   subcategory window started    onclick={tabCategoryMethod} onmouseover={subCategoryHandler} -->
+    <template if:true={showSubCategoryModel} >          
+        <section role="dialog" onmouseleave={closeSubCategoryHandlerHandler} tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div  onmouseleave={closeSubCategoryHandlerHandler} class="slds-m-horizontal_small">                       
+            <template for:each={subcategories.data} for:item='subcategory' >                
+                <div key={subcategory.Id} aria-modal="true" class="slds-modal__content slds-p-around_small" >         
+                    <a class='button2' key={subcategory.Id} onclick={tabCategoryMethod} label={subcategory.Name} name={subcategory.Id}>{subcategory.Name}</a> 
+                    <template for:each={subcategory.kasmors__Categories__r} for:item="sublink">
+                            <div key={sublink.Id}><a class='button3'  onclick={tabCategoryMethod} label={sublink.Name} name={sublink.Id}>{sublink.Name}</a></div>                    
+                    </template>
+                </div>                     
+            </template>                                 
+        </div>
+        </section> 
+    </template>             
+    <!--  Subcategory window Ended --> 
+    <c-ko-site-searched-product-list-lwc received-search-key={searchKey}></c-ko-site-searched-product-list-lwc>
+</template>

@@ -1,0 +1,67 @@
+<template>
+     <!-- <template if:true={productsWithVarients.data}>
+        <lightning-card title='Product Varients'>
+            <lightning-layout>
+                <div class='slds-grid slds-wrap'>
+                <template for:each={productsWithVarients.data} for:item='productVarient'>
+                <lightning-layout-item key={productVarient.Id}  class='slds-var-m-around_medium slds-size_1-of-12'>
+                        <lightning-card>
+                        <img src={productVarient.Image_URL__c} alt={productVarient.Name} > 
+                        <h1>{productVarient.Name}</h1>
+                        <p>{productVarient.Option_1_Label__c}-{productVarient.Option_1_Value__c}</p>
+                        <p>{productVarient.Option_2_Label__c}-{productVarient.Option_2_Value__c}</p>
+                        <p class="price">{productVarient.Price__c}</p>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+                </div>
+            </lightning-layout>
+        </lightning-card>
+</template>   -->
+<div class="slds-size_4-of-4">
+    <div class="slds-text-align_center slds-m-around_x-small">Deals Of The Day
+        <lightning-carousel>
+            <lightning-carousel-image
+                src = {carousel.carouselMan1}
+               >
+            </lightning-carousel-image>
+            <lightning-carousel-image
+                src = {carousel.carouselWoman1}
+                >
+            </lightning-carousel-image>
+            <lightning-carousel-image
+                src = {carousel.carouselBeauty1}
+                >
+            </lightning-carousel-image>
+            <lightning-carousel-image
+                src = {carousel.carouselKid2}
+                >
+            </lightning-carousel-image>
+        </lightning-carousel>
+    </div>
+</div>
+<template if:true={categoryProducts.data}>
+    <lightning-card title='Products'>
+        <lightning-layout >
+            <div class='slds-grid slds-wrap'>
+            <template for:each={categoryProducts.data.records} for:item='product'>
+                    <lightning-layout-item key={product.Id} name={product.Id}  class='slds-var-m-around_medium slds-size_1-of-12' >
+                                <lightning-card>
+                                <img src={product.kasmors__Image_URL__c} alt={product.Name} name={product.Id} onclick={ProductDetails} class="productImg">  
+                                <h1>{product.Name}</h1>
+                                </lightning-card>
+                    </lightning-layout-item>
+            </template>
+            </div>
+        </lightning-layout>
+        <c-paginator
+        page-number={pageNumber}
+        page-size={categoryProducts.data.pageSize}
+        total-item-count={categoryProducts.data.totalItemCount}
+        onprevious={handlePreviousPage}
+        onnext={handleNextPage}
+    ></c-paginator>
+        </lightning-card>
+    </template> 
+</template>
+</template>

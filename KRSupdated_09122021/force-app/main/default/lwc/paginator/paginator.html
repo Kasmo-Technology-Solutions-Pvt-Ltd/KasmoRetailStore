@@ -1,0 +1,32 @@
+<template>
+ <div class="slds-align_absolute-center">
+     <lightning-layout >
+
+        <!-- vertical-align="center"
+        class="slds-var-m-horizontal_x-small"> -->
+        <lightning-layout-item  class="slds-text-align_left">
+            <template if:false={isFirstPage}>
+                <lightning-button
+                    class="previous"
+                    label="Previous"
+                    onclick={handlePrevious}
+                ></lightning-button>
+            </template>
+        </lightning-layout-item >
+        <div class="slds-p-horizontal_x-small">
+        <lightning-layout-item  class="nav-info slds-text-align_center">
+            {totalItemCount} items • page {currentPageNumber} of {totalPages}
+        </lightning-layout-item>
+    </div>
+        <lightning-layout-item  class="nav-next slds-text-align_right">
+            <template if:false={isLastPage}>
+                <lightning-button
+                    class="next"
+                    label="Next"
+                    onclick={handleNext}
+                ></lightning-button>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout> 
+    </div>
+</template>

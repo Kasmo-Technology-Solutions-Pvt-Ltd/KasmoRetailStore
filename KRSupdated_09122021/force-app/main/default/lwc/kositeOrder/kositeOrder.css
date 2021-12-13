@@ -1,0 +1,53 @@
+.orderId{
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+
+
+}
+.imgsize{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
+.head{
+    /* position: absolute; */
+    padding: 30px 30px 30px;
+
+}
+.orderId:hover{
+    color: rgba(11, 127, 243, 0.774);
+}
+.imgData{
+    background-color: rgb(234, 220, 50);
+    border-radius: 2px;
+    width: 80px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+}
+.applyButton{
+    
+    padding: 4px 16px;
+    
+    color: #ff3f6c;
+    border: 1px solid #ff3f6c;
+    border-radius: 3px;
+    text-transform: none;
+    cursor: pointer;
+    font-weight: 600;
+    right: 0;
+    background: #fff;
+    font-size: 12px;
+}
+.Status{
+    padding: 4px 16px;
+    color: #fff;
+    border-radius: 5px;
+    border-color:#ff3f6c ;
+    text-transform: none;
+    font-weight: 600;
+    background:#ff3f6c ;
+    
+    margin: 2px;
+}
